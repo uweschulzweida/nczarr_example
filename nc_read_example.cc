@@ -53,9 +53,9 @@ main(void)
   float preemption;
   nce(nc_get_var_chunk_cache(ncId, varId, &size, &nelems, &preemption));
   printf("default chunk cache: size=%zu, nelems=%zu, preemption=%g\n", size, nelems, preemption);
-  size = 4 * numCells;
-  nelems = 50;
-  preemption = 0.75;
+  size = 4 * numCells; // one float field at one time step
+  nelems = 1000;
+  preemption = 0.5;
   nce(nc_set_var_chunk_cache(ncId, varId, size, nelems, preemption));
   printf("set chunk cache: size=%zu, nelems=%zu, preemption=%g\n", size, nelems, preemption);
 
